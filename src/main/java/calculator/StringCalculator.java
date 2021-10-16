@@ -9,7 +9,12 @@ class StringCalculator {
 		
 		else if (input.contains(",")) {
 			String[] str = input.split(",");
-			return toInt(str[0]) + toInt(str[1]);
+			int sum = 0;
+			for(String s: str) {
+				int number = toInt(s);
+				sum = sum + number;
+			}
+			return sum;
 		}
 		
 		else {
