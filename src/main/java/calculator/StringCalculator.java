@@ -8,12 +8,14 @@ class StringCalculator {
 		} 
 		
 		else if (input.contains(",")) {
-			String[] str = input.split(",");
+			
+			String[] str = input.split("[\n,]");
 			int sum = 0;
 			for(String s: str) {
 				int number = toInt(s);
 				sum = sum + number;
 			}
+			
 			return sum;
 		}
 		
