@@ -1,7 +1,9 @@
 package calculator;
 
-class StringCalculator {
+import java.util.Scanner;
 
+class StringCalculator {
+	
 	public int add(String input) {
 		if (input.isEmpty()) {
 			return 0;
@@ -10,13 +12,20 @@ class StringCalculator {
 		else if (input.contains(",")) {
 			
 			String[] str = input.split("[\n,]");
-			int sum = 0;
-			for(String s: str) {
-				int number = toInt(s);
-				sum = sum + number;
-			}
+			return doAddition(str);
+		}
+		
+		else if(input.startsWith("//")) {
+			Scanner scan = new Scanner(input);
+			char delimiter = input.charAt(2);
+			scan.nextLine();
+			String string = scan.nextLine();
 			
-			return sum;
+			System.out.println(string);
+			String[] str = string.split(Character.toString(delimiter));
+
+			scan.close();
+			return doAddition(str);
 		}
 		
 		else {
@@ -26,6 +35,15 @@ class StringCalculator {
 	
 	private int toInt(String string) {
 		return Integer.parseInt(string);
+	}
+	
+	private int doAddition(String[] string) {
+		int sum = 0;
+		for(String s: string) {
+			int number = toInt(s);
+			sum = sum + number;
+		}
+		return sum;
 	}
 
 }
