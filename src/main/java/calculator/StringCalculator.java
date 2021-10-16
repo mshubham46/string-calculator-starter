@@ -6,13 +6,19 @@ class StringCalculator {
 		if (input.isEmpty()) {
 			return 0;
 		} 
+		
 		else if (input.contains(",")) {
 			String[] str = input.split(",");
-			return Integer.parseInt(str[0]) + Integer.parseInt(str[1]);
+			return toInt(str[0]) + toInt(str[1]);
 		}
+		
 		else {
-			return Integer.parseInt(input);
+			return toInt(input);
 		}
+	}
+	
+	private int toInt(String string) {
+		return Integer.parseInt(string);
 	}
 
 }
