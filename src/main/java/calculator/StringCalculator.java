@@ -21,7 +21,6 @@ class StringCalculator {
 			scan.nextLine();
 			String string = scan.nextLine();
 			
-			System.out.println(string);
 			String[] str = string.split(Character.toString(delimiter));
 
 			scan.close();
@@ -39,11 +38,20 @@ class StringCalculator {
 	
 	private int doAddition(String[] string) {
 		int sum = 0;
+		StringBuilder sb = new StringBuilder();
 		for(String s: string) {
 			int number = toInt(s);
-			sum = sum + number;
+			if(number > 0)
+				sum = sum + number;
+			else
+				sb.append(number);
 		}
-		return sum;
+		
+		if(sb.length() == 0)
+			return sum;
+		else
+			System.out.println(sb);
+			throw new RuntimeException("negatives not allowed "+sb);
 	}
 
 }
