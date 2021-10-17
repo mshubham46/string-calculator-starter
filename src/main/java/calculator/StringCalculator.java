@@ -3,8 +3,9 @@ package calculator;
 import java.util.Scanner;
 
 class StringCalculator {
-	
+	private static int counter = 0;
 	public int add(String input) {
+		counter++;
 		if (input.isEmpty()) {
 			return 0;
 		} 
@@ -41,9 +42,11 @@ class StringCalculator {
 		StringBuilder sb = new StringBuilder();
 		for(String s: string) {
 			int number = toInt(s);
-			if(number > 0)
+			if(number > 0) {
+				if(number > 1000)
+					continue;
 				sum = sum + number;
-			else
+			}else
 				sb.append(number);
 		}
 		
@@ -52,6 +55,10 @@ class StringCalculator {
 		else
 			System.out.println(sb);
 			throw new RuntimeException("negatives not allowed "+sb);
+	}
+	
+	public int GetCalledCount() {
+		return counter;
 	}
 
 }
