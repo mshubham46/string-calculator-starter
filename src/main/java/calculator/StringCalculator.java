@@ -17,13 +17,19 @@ class StringCalculator {
 		}
 		
 		else if(input.startsWith("//")) {
+			String delimiter = "";
+			if(input.charAt(2) == '[') {
+				int lastIndex = input.indexOf("]");
+				delimiter = input.substring(3, lastIndex);
+			}else {
+				delimiter = Character.toString(input.charAt(2));
+			}
+				
 			Scanner scan = new Scanner(input);
-			char delimiter = input.charAt(2);
 			scan.nextLine();
 			String string = scan.nextLine();
 			
-			String[] str = string.split(Character.toString(delimiter));
-
+			String[] str = string.split(delimiter);
 			scan.close();
 			return doAddition(str);
 		}

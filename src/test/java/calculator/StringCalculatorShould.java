@@ -77,4 +77,11 @@ class StringCalculatorShould {
     	StringCalculator stringCalculator = new StringCalculator();
     	assertEquals(8, stringCalculator.GetCalledCount());
     }
+    
+    @Test
+    @Order(10)
+    void should_accept_delimiter_of_any_length() {
+    	StringCalculator stringCalculator = new StringCalculator();
+    	assertEquals(9, stringCalculator.add("//[###]\n4###2###3"));
+    }
 }
