@@ -84,4 +84,18 @@ class StringCalculatorShould {
     	StringCalculator stringCalculator = new StringCalculator();
     	assertEquals(9, stringCalculator.add("//[###]\n4###2###3"));
     }
+    
+    @Test
+    @Order(11)
+    void string_starting_with_plus_should_be_incremented_by_one() {
+    	StringCalculator stringCalculator = new StringCalculator();
+    	assertEquals(9, stringCalculator.add("+1,2,3"));
+    }
+    
+    @Test
+    @Order(12)
+    void string_starting_with_plus_and_contains_double_slash_should_be_incremented_by_one() {
+    	StringCalculator stringCalculator = new StringCalculator();
+    	assertEquals(9, stringCalculator.add("+//[;]\n1;2;3"));
+    }
 }
